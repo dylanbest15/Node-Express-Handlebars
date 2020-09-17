@@ -18,4 +18,4 @@ const orm = {
 }
 
 // export orm
-module.exprots = orm;
+module.exports = orm;
