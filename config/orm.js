@@ -1,5 +1,5 @@
 // dependencies
-const connection = require("./connection");
+const connection = require("./connection.js");
 
 // crud query object
 const orm = {
