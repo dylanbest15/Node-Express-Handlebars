@@ -1,7 +1,7 @@
 // dependencies
 const orm = require("../config/orm.js");
 
-// burger object
+// crud burger object
 const burger = {
   selectAll: function() {
 
