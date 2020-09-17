@@ -1,8 +1,8 @@
 // dependencies
-var mysql = require("mysql");
+const mysql = require("mysql");
 
 // connect to server
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
