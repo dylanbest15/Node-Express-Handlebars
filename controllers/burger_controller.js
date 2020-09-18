@@ -8,7 +8,7 @@ const router = express.Router();
 // crud routes
 router.get("/", function (req, res) {
   burger.selectAll(function (data) {
-    var hbsObject = {
+    const hbsObject = {
       burgers: data
     };
     res.render("index", hbsObject);
