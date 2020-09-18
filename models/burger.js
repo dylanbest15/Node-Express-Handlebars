@@ -15,14 +15,14 @@ const burger = {
       cb(res);
     })
   },
-  updateOne: function (devouredCol, devouredVal, burgerCol, burgerVal, cb) {
-    orm.updateOne("burgers", devouredCol, devouredVal, burgerCol, burgerVal, function (err, res) {
+  updateOne: function (devouredCol, devouredVal, idCol, idVal, cb) {
+    orm.updateOne("burgers", devouredCol, devouredVal, idCol, idVal, function (err, res) {
       if (err) throw err;
       cb(res);
     })
   },
-  deleteOne: function (burgerCol, burgerVal, cb) {
-    orm.deleteOne("burgers", burgerCol, burgerVal, function (err, res) {
+  deleteOne: function (idCol, idVal, cb) {
+    orm.deleteOne("burgers", idCol, idVal, function (err, res) {
       if (err) throw err;
       cb(res);
     })

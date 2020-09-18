@@ -17,16 +17,16 @@ const orm = {
       cb(res);
     })
   },
-  updateOne: function (table, setCol, setVal, whereCol, whereVal, cb) {
+  updateOne: function (table, setCol, setVal, idCol, idVal, cb) {
     var query = "UPDATE ? SET ? = ? WHERE ? = ?";
-    connection.query(query, [table, setCol, setVal, whereCol, whereVal], function (err, res) {
+    connection.query(query, [table, setCol, setVal, idCol, idVal], function (err, res) {
       if (err) throw err;
       cb(res);
     })
   },
-  deleteOne: function (table, whereCol, whereVal, cb) {
+  deleteOne: function (table, idCol, idVal, cb) {
     var query = "DELETE FROM ? WHERE ? = ?";
-    connection.query(query, [table, whereCol, whereVal], function (err, res) {
+    connection.query(query, [table, idCol, idVal], function (err, res) {
       if (err) throw err;
       cb(res);
     })
