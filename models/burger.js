@@ -3,17 +3,29 @@ const orm = require("../config/orm.js");
 
 // crud burger object
 const burger = {
-  selectAll: function() {
-
+  selectAll: function (cb) {
+    orm.selectAll("burgers", function (err, res) {
+      if (err) throw err;
+      cb(res);
+    })
   },
-  insertOne: function() {
-
+  insertOne: function (burgerCol, burgerVal, cb) {
+    orm.insertOne("burgers", burgerCol, burgerVal, function (err, res) {
+      if (err) throw err;
+      cb(res);
+    })
   },
-  updateOne: function() {
-
+  updateOne: function (devouredCol, devouredVal, burgerCol, burgerVal, cb) {
+    orm.updateOne("burgers", devouredCol, devouredVal, burgerCol, burgerVal, function (err, res) {
+      if (err) throw err;
+      cb(res);
+    })
   },
-  deleteOne: function() {
-
+  deleteOne: function (burgerCol, burgerVal, cb) {
+    orm.deleteOne("burgers", burgerCol, burgerVal, function (err, res) {
+      if (err) throw err;
+      cb(res);
+    })
   }
 }
 

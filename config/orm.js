@@ -3,40 +3,32 @@ const connection = require("./connection.js");
 
 // crud query object
 const orm = {
-  selectAll: function (tableName) {
-    return new Promise((resolve, reject) => {
-      var query = "SELECT * FROM ?";
-      connection.query(query, tableName, function (err, res) {
-        if (err) reject(err);
-        return resolve(res);
-      })
+  selectAll: function (table, cb) {
+    var query = "SELECT * FROM ?";
+    connection.query(query, table, function (err, res) {
+      if (err) throw err;
+      cb(res);
     })
   },
-  insertOne: function (tableName, burgerName) {
-    return new Promise((resolve, reject) => {
-      var query = "INSERT INTO ? SET burger_name = ?";
-      connection.query(qyery, [tableName, burgerName], function (err, res) {
-        if (err) reject(err);
-        return resolve(res);
-      })
+  insertOne: function (table, setCol, setVal, cb) {
+    var query = "INSERT INTO ? SET ? = ?";
+    connection.query(qyery, [table, setCol, setVal], function (err, res) {
+      if (err) throw err;
+      cb(res);
     })
   },
-  updateOne: function (tableName, devoured, burgerName) {
-    return new Promise((resolve, reject) => {
-      var query = "UPDATE ? SET devoured = ? WHERE burger_name = ?";
-      connection.query(query, [tableName, devoured, burgerName], function (err, res) {
-        if (err) reject(err);
-        return resolve(res);
-      })
+  updateOne: function (table, setCol, setVal, whereCol, whereVal, cb) {
+    var query = "UPDATE ? SET ? = ? WHERE ? = ?";
+    connection.query(query, [table, setCol, setVal, whereCol, whereVal], function (err, res) {
+      if (err) throw err;
+      cb(res);
     })
   },
-  deleteOne: function (tableName, burgerName) {
-    return new Promise((resolve, reject) => {
-      var query = "DELETE FROM ? WHERE burger_name = ?";
-      connection.query(query, [tableName, burgerName], function (err, res) {
-        if (err) reject(err);
-        return resolve(res);
-      })
+  deleteOne: function (table, whereCol, whereVal, cb) {
+    var query = "DELETE FROM ? WHERE ? = ?";
+    connection.query(query, [table, whereCol, whereVal], function (err, res) {
+      if (err) throw err;
+      cb(res);
     })
   }
 }
