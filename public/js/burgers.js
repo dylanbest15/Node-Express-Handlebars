@@ -45,5 +45,4 @@ $(function () {
       location.reload();
     })
   })
-
 })
