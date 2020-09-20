@@ -5,7 +5,10 @@ const orm = require("../config/orm.js");
 const burger = {
   selectAll: function (cb) {
     orm.selectAll("burgers", function (err, res) {
-      if (err) throw err;
+      if (err) {
+        console.log(JSON.stringify(err, null, 2));
+        throw err;
+      }
       cb(res);
     })
   },

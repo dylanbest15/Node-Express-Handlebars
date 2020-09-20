@@ -16,14 +16,15 @@ router.get("/", function (req, res) {
 })
 
 router.post("/api/burgers", function (req, res) {
-  burger.updateOne("burger_name", req.body.burger_name, function (result) {
-    res.json({ id: result.insertId });
+  burger.insertOne("burger_name", req.body.burger_name, function (result) {
+    res.json(result);
   })
 })
 
 router.put("/api/burgers/:id", function (req, res) {
   burger.updateOne("devoured", req.body.devoured, "id", req.params.id, function (result) {
     if (result.changedRows === 0) {
+      console.log(result);
       return res.status(404).end();
     } else {
       res.status(200).end();

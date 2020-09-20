@@ -5,7 +5,7 @@ $(function () {
   $(".create-form").on("submit", function (event) {
     event.preventDefault();
     const newBurger = {
-      burger_name: $("burger-name").val().trim()
+      burger_name: $("#burger-name").val().trim()
     }
 
     // create burger post request
@@ -21,10 +21,11 @@ $(function () {
   // devour burger click event
   $(".change-devoured").on("click", function (event) {
     const id = $(this).data("id");
-    const newDevoured = $(this).data("newdevoured");
+    const newDevoured = parseInt($(this).data("devoured"), 10) === 1 ? 0 : 1;
     const newDevouredState = {
       devoured: newDevoured
     }
+    console.log(newDevouredState);
 
     // update burger put request
     $.ajax(`/api/burgers/${id}`, {
